@@ -75,7 +75,9 @@ export const listings = pgTable("listings", {
 
 export const propertyAddresses = pgTable("property_addresses", {
   id: serial("id").primaryKey(),
-  listingId: uuid("listing_id").references(() => listings.id),
+  listingId: uuid("listing_id").references(() => listings.id, {
+    onDelete: "cascade",
+  }),
   addressLine1: varchar("address_line1").notNull().default(""),
   addressLine2: varchar("address_line2").notNull().default(""),
   city: varchar("city").notNull().default(""),
@@ -85,7 +87,9 @@ export const propertyAddresses = pgTable("property_addresses", {
 
 export const clients = pgTable("clients", {
   id: serial("id").primaryKey(),
-  listingId: uuid("listing_id").references(() => listings.id),
+  listingId: uuid("listing_id").references(() => listings.id, {
+    onDelete: "cascade",
+  }),
   name: varchar("name").notNull().default(""),
   contactNumber: varchar("contact_number").notNull().default(""),
   email: varchar("email").notNull().default(""),
@@ -93,7 +97,9 @@ export const clients = pgTable("clients", {
 
 export const residentials = pgTable("residentials", {
   id: serial("id").primaryKey(),
-  listingId: uuid("listing_id").references(() => listings.id),
+  listingId: uuid("listing_id").references(() => listings.id, {
+    onDelete: "cascade",
+  }),
   propertySubType: varchar("property_sub_type").notNull().default(""),
   bedrooms: integer("bedrooms").notNull().default(0),
   bathrooms: integer("bathrooms").notNull().default(0),
@@ -103,14 +109,18 @@ export const residentials = pgTable("residentials", {
 
 export const commercials = pgTable("commercials", {
   id: serial("id").primaryKey(),
-  listingId: uuid("listing_id").references(() => listings.id),
+  listingId: uuid("listing_id").references(() => listings.id, {
+    onDelete: "cascade",
+  }),
   propertySubType: varchar("property_sub_type").notNull().default(""),
   furnishing: varchar("furnishing").notNull().default(""),
 });
 
 export const industrials = pgTable("industrials", {
   id: serial("id").primaryKey(),
-  listingId: uuid("listing_id").references(() => listings.id),
+  listingId: uuid("listing_id").references(() => listings.id, {
+    onDelete: "cascade",
+  }),
   propertySubType: varchar("property_sub_type").notNull().default(""),
   floorLoading: decimal("floor_loading").notNull().default("0.00"),
   eavesHeight: decimal("eaves_height").notNull().default("0.00"),
@@ -121,7 +131,9 @@ export const industrials = pgTable("industrials", {
 
 export const lands = pgTable("lands", {
   id: serial("id").primaryKey(),
-  listingId: uuid("listing_id").references(() => listings.id),
+  listingId: uuid("listing_id").references(() => listings.id, {
+    onDelete: "cascade",
+  }),
   propertySubType: varchar("property_sub_type").notNull().default(""),
   status: varchar("status").notNull().default(""),
   reserve: varchar("reserve").notNull().default(""),

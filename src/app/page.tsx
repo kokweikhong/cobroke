@@ -32,6 +32,14 @@ export default async function Home() {
             <div key={user.id} className="flex gap-4">
               <p className="font-semibold">{user.firstName}</p>
               <p className="text-sm opacity-50">{user.email}</p>
+              <div>
+                {user.listings.map((listing) => (
+                  <div key={listing.id} className="flex gap-4">
+                    <p className="font-semibold">{listing.projectName}</p>
+                    <p className="text-sm opacity-50">{listing.price}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

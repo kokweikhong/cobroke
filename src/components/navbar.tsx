@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "flex justify-end items-center h-16 text-black relative font-mono",
+        "flex justify-end items-center h-16 text-black font-mono",
         "sticky top-0 z-40 w-full",
         "px-4"
       )}
